@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTornado : Enemies
+public class EnemyTornado : Enemies, IDamagable
 {
     [SerializeField] private GameObject tornado;
     [SerializeField] protected EnemyData enemyData;
     void Start()
     {
+        life = enemyData.life;
+        moveToThis = GetRandomVectorFromList();
 
     }
 
     void Update()
     {
+        RotateTowardPlayer();
+        if (ApplyGravityWhenNeeded())
+        {
+            transform.position -= new Vector3(0, 5.5f, 0) * Time.deltaTime;
+        }
         MovementEnemies();
         if (agent.speed == enemyData.attackSpeed)
         {
@@ -21,6 +28,33 @@ public class EnemyTornado : Enemies
         else
         {
             tornado.SetActive(false);
+        }
+    }
+    protected void MovementEnemies()
+    {
+        if (player != null)
+        {
+            agent.speed = enemyData.attackSpeed;
+            moveToThis = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        }
+        else
+        {
+            agent.speed = enemyData.normalSpeed;
+            var magnitud = GetVectorEnemyToPoint(moveToThis).magnitude;
+            if (magnitud < 1f)
+            {
+                moveToThis = GetRandomVectorFromList();
+            }
+        }
+        agent.destination = moveToThis;
+    }
+    public void GetDamage(float damage)
+    {
+        life -= damage;
+        if (life < 0f)
+        {
+            LevelManager.lastEnemyKilled = enemyData.ID;
+            Destroy(this.gameObject);
         }
     }
 }

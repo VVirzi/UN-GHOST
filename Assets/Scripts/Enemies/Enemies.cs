@@ -4,24 +4,17 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Enemies : MonoBehaviour, IEnemy, IDamagable
+public class Enemies : MonoBehaviour, IEnemy
 {
-    protected float life;
-    protected float normalSpeed;
     protected float life;
     [SerializeField] protected PlayerController player;
     [SerializeField] protected NavMeshAgent agent;
-    
     [SerializeField] protected Transform[] interestPoints;
-    //protected float normalSpeed;
-    //protected float attackSpeed;
+
     protected Vector3 moveToThis;
     void Start()
     {
         moveToThis = GetRandomVectorFromList();
-        
-        //normalSpeed = enemyData.normalSpeed;
-        //attackSpeed = enemyData.attackSpeed;
     }
 
     // Update is called once per frame
@@ -51,24 +44,6 @@ public class Enemies : MonoBehaviour, IEnemy, IDamagable
             return false;
         }
     }
-    protected void MovementEnemies()
-    {
-        if (player != null)
-        {
-            agent.speed = enemyData.attackSpeed;
-            moveToThis = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
-        }
-        else
-        {
-            agent.speed = enemyData.normalSpeed;
-            var magnitud = GetVectorEnemyToPoint(moveToThis).magnitude;
-            if (magnitud < 1f)
-            {
-                moveToThis = GetRandomVectorFromList();
-            }
-        }
-        agent.destination = moveToThis;
-    }
 
     protected Vector3 GetVectorEnemyToPoint(Vector3 objetivo)
     {
@@ -91,15 +66,5 @@ public class Enemies : MonoBehaviour, IEnemy, IDamagable
     public void SetPlayer(PlayerController playerController)
     {
         player = playerController;
-    }
-
-    public void GetDamage(float damage)
-    {
-        life -= damage;
-        if(life < 0f)
-        {
-            LevelManager.lastEnemyKilled = enemyData.ID;
-            Destroy(this.gameObject);
-        }
     }
 }

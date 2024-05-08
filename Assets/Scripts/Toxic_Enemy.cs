@@ -2,25 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Toxic_Enemy : Enemies
+public class Toxic_Enemy : Enemies, IDamagable
 {
-    private ParticleCollisionEvent _collisionEvent;
+    [SerializeField] protected EnemyData enemyData;
     void Start()
     {
-        
+        life = enemyData.life;
+        moveToThis = GetRandomVectorFromList();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovementEnemies();
-        if(_collisionEvent.colliderComponent != null)
+        RotateTowardPlayer();
+        if (ApplyGravityWhenNeeded())
         {
-            if (_collisionEvent.colliderComponent.CompareTag("Player"))
+            transform.position -= new Vector3(0, 5.5f, 0) * Time.deltaTime;
+        }
+        MovementEnemies();
+        
+    }
+    protected void MovementEnemies()
+    {
+        if (player != null)
+        {
+            agent.speed = enemyData.attackSpeed;
+            moveToThis = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
+        }
+        else
+        {
+            agent.speed = enemyData.normalSpeed;
+            var magnitud = GetVectorEnemyToPoint(moveToThis).magnitude;
+            if (magnitud < 1f)
             {
-                player.GetDamage(10f);
+                moveToThis = GetRandomVectorFromList();
             }
         }
+        agent.destination = moveToThis;
     }
-
+    public void GetDamage(float damage)
+    {
+        life -= damage;
+        if (life < 0f)
+        {
+            LevelManager.lastEnemyKilled = enemyData.ID;
+            Destroy(this.gameObject);
+        }
+    }
 }
