@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2118755604}
+  - {fileID: 1402608407}
   m_Father: {fileID: 6525485763378427660}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9802,6 +9803,60 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &1402608406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402608407}
+  - component: {fileID: 1402608410}
+  - component: {fileID: 1402608411}
+  m_Layer: 0
+  m_Name: Default_Plane_Hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402608407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402608406}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 6.99}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 330585546}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &1402608410
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402608406}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1402608411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402608406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000001, y: 1.4233059e-13, z: 10.000004}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1700985143
 GameObject:
   m_ObjectHideFlags: 0
@@ -9910,6 +9965,7 @@ GameObject:
   - component: {fileID: 6525485763378427660}
   - component: {fileID: 1416145696}
   - component: {fileID: 1416145700}
+  - component: {fileID: 1456263945}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9946,7 +10002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34ba1b0fcfc36f4787d10171177c945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 4
   rotationSensibility: 600
   playerCamera: {fileID: 330585545}
 --- !u!143 &1416145700
@@ -9967,6 +10023,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1456263945
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810874201414626150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.6265295, z: 1}
+  m_Center: {x: 0, y: -0.0076406, z: 0}
 --- !u!1 &3840662386429892185
 GameObject:
   m_ObjectHideFlags: 0
@@ -10060,7 +10129,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3840662386429892185}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -10171,21 +10240,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3857013520860635272}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2056409562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4127466102278839769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dccfde7de9ca184a9a2fdf1f6a35e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPoint: {fileID: 2004321180}
-  weaponSight: {fileID: 330585545}
-  fuerzaDeAbsorcion: -40
 --- !u!120 &1412251729
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -10294,6 +10348,21 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &2056409562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127466102278839769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dccfde7de9ca184a9a2fdf1f6a35e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPoint: {fileID: 2004321180}
+  weaponSight: {fileID: 330585545}
+  fuerzaDeAbsorcion: -40
 --- !u!1001 &3857013521882979272
 PrefabInstance:
   m_ObjectHideFlags: 0

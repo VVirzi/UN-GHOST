@@ -12,7 +12,6 @@ public class SuctionMachine : Weapons
         {
             if (WeaponRayCast())
             {
-                //endPoint = hit.point;
                 directionForce = DirectionCalculate(weaponPoint.transform.position, endPoint);
                 directionForce = directionForce * fuerzaDeAbsorcion * Time.deltaTime;
                 hit.transform.position += directionForce;
@@ -21,7 +20,6 @@ public class SuctionMachine : Weapons
             else
             {
                 directionForce = Vector3.zero;
-                //endPoint = weaponSight.transform.forward * 7f;
             }
             endPoint = hit.point;
             SetLineRenderer();
@@ -41,13 +39,13 @@ public class SuctionMachine : Weapons
 
     private void ChangeEnemyScale(RaycastHit hit)
     {
-        if (hit.transform.localScale.x < 0.3 || hit.transform.localScale.y < 0.3 || hit.transform.localScale.z < 0.3)
+        if (hit.transform.localScale.x < 0.5 || hit.transform.localScale.y < 0.5 || hit.transform.localScale.z < 0.5)
         {
             Destroy(hit.transform.gameObject);
         }
         else
         {
-            hit.transform.localScale -= Vector3.one * 0.02f;
+            hit.transform.localScale -= Vector3.one * 2f*Time.deltaTime;
         }
     }
 }

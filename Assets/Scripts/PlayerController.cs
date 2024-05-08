@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.Types;
+using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamagable
 {
     private CharacterController _player;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSensibility;
     [SerializeField] private Camera playerCamera;
+    private float life = 100;
     private float cameraVerticalAngle;
     
     void Start()
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         Rotationlook();
         MoveCharacter();
+        ApplyGravityWhenNeeded();
     }
 
     private void MoveCharacter()
@@ -47,5 +51,23 @@ public class PlayerController : MonoBehaviour
 
        
         playerCamera.transform.localRotation = Quaternion.Euler(-cameraVerticalAngle,0f,0f);
+    }
+
+    private void ApplyGravityWhenNeeded()
+    {
+        if(transform.position.y > 0.96f)
+        {
+            Vector3 moventY = new Vector3 (0, -5.5f, 0);
+            _player.Move(moventY*Time.deltaTime);
+        }
+    }
+
+    public void GetDamage(float damage)
+    {
+        life-= damage;
+        if(life < 0)
+        {
+            SceneManager.LoadScene("DefeatMenu");
+        }
     }
 }

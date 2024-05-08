@@ -9,14 +9,12 @@ public class RayGun : Weapons
     {
         if (Input.GetButton("Fire2"))
         {
-            //endPoint = weaponSight.transform.forward * 7f;
             if (WeaponRayCast())
             {
                 endPoint = hit.point;
             }
             else
             {
-                //endPoint = weaponSight.transform.forward * 7f;
             }
             endPoint = hit.point;
             SetLineRenderer();

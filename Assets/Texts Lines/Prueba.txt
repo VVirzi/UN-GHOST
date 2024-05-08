@@ -5,4 +5,3 @@ Let's start with the basics.
 You move with the AWSD keys or the arrow keys.
 The weapon you carry in your right hand fires a laser beam that weakens the ghosts. To use it you must press the right mouse button.
 The weapon you carry in your left hand, aspires to the weakened ghosts. To use it you must press the left mouse button.
-

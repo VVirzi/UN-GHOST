@@ -11,12 +11,13 @@ public class CargarDiálogos : MonoBehaviour
     [SerializeField] private TextAsset file;
     private List<string> dialogueText = new List<string>();
     [SerializeField] private TextMeshProUGUI textComp;
-
+    [SerializeField] private GameObject DialogueUI;
+    [SerializeField] private GameObject PressE;
+    [SerializeField] private TutorialLevelmanager levelmanager;
     private int index;
-    private float textSpeed = 0.1f;
+    private float textSpeed = 0.04f;
     void Start()
     {
-        //textComp = GetComponent<TextMesh>();
         textComp.text = string.Empty;
         DialogueToList();
         StartDialogue();
@@ -29,11 +30,8 @@ public class CargarDiálogos : MonoBehaviour
         {
             if (textComp.text == dialogueText[index])
             {
+                PressE.SetActive(false);
                 NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
             }
         }
     }
@@ -56,6 +54,7 @@ public class CargarDiálogos : MonoBehaviour
             textComp.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
+        PressE.SetActive(true);
     }
 
     private void NextLine()
@@ -68,7 +67,8 @@ public class CargarDiálogos : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            levelmanager.FinishLevel?.Invoke();
+            Destroy(DialogueUI);
         }
     }
 }

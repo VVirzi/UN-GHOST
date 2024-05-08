@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: b2d669fb4b5c56c46b5d9fed9286586d
+guid: 7cce68a77b43cd943baf4e18e5772644
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tapa_Recipientegrande
+    second: {fileID: 2100000, guid: 35b54db27e4825d46bc913206524345f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vidrio
+    second: {fileID: 2100000, guid: a88ee5f95f1293f4ebdf669e3e0a7cbc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

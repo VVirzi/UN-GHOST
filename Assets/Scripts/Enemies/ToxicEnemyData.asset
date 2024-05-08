@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a89a6ad2fe9105242bb7f24d49c5fe4d, type: 3}
+  m_Name: ToxicEnemyData
+  m_EditorClassIdentifier: 
+  <EnemiesPrefab>k__BackingField: {fileID: 368078275, guid: 666bc45c87aaec246b3b8d2a954f5c08,
+    type: 3}
+  <ID>k__BackingField: Toxic
+  <life>k__BackingField: 0

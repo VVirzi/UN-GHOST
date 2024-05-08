@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: RayGunCuerpo
-    second: {fileID: 2100000, guid: 009e6ea35b7bb474297c359aaab390af, type: 2}
+    second: {fileID: 2100000, guid: b58d5362b6243c54da192fab1638e41f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
