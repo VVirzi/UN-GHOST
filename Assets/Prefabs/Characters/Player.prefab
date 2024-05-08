@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 475537057}
   - component: {fileID: 475537059}
   - component: {fileID: 475537058}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ParticulasSalida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5001,7 +5001,7 @@ GameObject:
   - component: {fileID: 533535193}
   - component: {fileID: 533535195}
   - component: {fileID: 533535194}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9852,7 +9852,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402608406}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000001, y: 1.4233059e-13, z: 10.000004}
@@ -9866,7 +9866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1700985144}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PuntoSalida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9898,7 +9898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2004321180}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PuntoLlegada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9951,8 +9951,40 @@ Transform:
   m_Children:
   - {fileID: 3606367498179151715}
   - {fileID: 3606367497181985827}
+  - {fileID: 4961936814098890367}
   m_Father: {fileID: 330585546}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &819221292867385682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4961936814098890367}
+  m_Layer: 0
+  m_Name: InteractionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4961936814098890367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819221292867385682}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.44, y: 0, z: 1.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2118755604}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2810874201414626150
 GameObject:
@@ -9966,7 +9998,8 @@ GameObject:
   - component: {fileID: 1416145696}
   - component: {fileID: 1416145700}
   - component: {fileID: 1456263945}
-  m_Layer: 0
+  - component: {fileID: -2119933776466434818}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10031,11 +10064,28 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2810874201414626150}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.6265295, z: 1}
   m_Center: {x: 0, y: -0.0076406, z: 0}
+--- !u!114 &-2119933776466434818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810874201414626150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f7a3289f77bd244ac9d49006a1287a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPoint: {fileID: 4961936814098890367}
+  interactionRadius: 1
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &3840662386429892185
 GameObject:
   m_ObjectHideFlags: 0
@@ -10224,7 +10274,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6bf48267cb56efe409b33495766b734d,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bf48267cb56efe409b33495766b734d, type: 3}

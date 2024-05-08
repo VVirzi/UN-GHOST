@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_Disparito : Enemies
 {
-    // Start is called before the first frame update
+    [SerializeField] protected EnemyData enemyData;
     void Start()
     {
         

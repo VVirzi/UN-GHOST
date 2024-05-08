@@ -6,16 +6,22 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Enemies : MonoBehaviour, IEnemy, IDamagable
 {
-    protected float life = 100;
+    protected float life;
+    protected float normalSpeed;
+    protected float life;
     [SerializeField] protected PlayerController player;
     [SerializeField] protected NavMeshAgent agent;
-    protected float attackSpeed = 3f;
-    protected float normalSpeed = 1.5f;
+    
     [SerializeField] protected Transform[] interestPoints;
+    //protected float normalSpeed;
+    //protected float attackSpeed;
     protected Vector3 moveToThis;
     void Start()
     {
         moveToThis = GetRandomVectorFromList();
+        
+        //normalSpeed = enemyData.normalSpeed;
+        //attackSpeed = enemyData.attackSpeed;
     }
 
     // Update is called once per frame
@@ -49,12 +55,12 @@ public class Enemies : MonoBehaviour, IEnemy, IDamagable
     {
         if (player != null)
         {
-            agent.speed = attackSpeed;
+            agent.speed = enemyData.attackSpeed;
             moveToThis = new Vector3(player.transform.position.x, 0f, player.transform.position.z);
         }
         else
         {
-            agent.speed = normalSpeed;
+            agent.speed = enemyData.normalSpeed;
             var magnitud = GetVectorEnemyToPoint(moveToThis).magnitude;
             if (magnitud < 1f)
             {
@@ -92,6 +98,7 @@ public class Enemies : MonoBehaviour, IEnemy, IDamagable
         life -= damage;
         if(life < 0f)
         {
+            LevelManager.lastEnemyKilled = enemyData.ID;
             Destroy(this.gameObject);
         }
     }

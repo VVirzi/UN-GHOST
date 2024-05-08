@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IDamagable
 {
+    public string lastEnemyKilled { get; private set; }
+    private Action lastEnemykilled;
     private CharacterController _player;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSensibility;
@@ -69,5 +72,11 @@ public class PlayerController : MonoBehaviour, IDamagable
         {
             SceneManager.LoadScene("DefeatMenu");
         }
+    }
+
+
+    private void SubscribeEvents()
+    {
+
     }
 }

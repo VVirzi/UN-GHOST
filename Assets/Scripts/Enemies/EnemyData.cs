@@ -5,6 +5,7 @@ public class EnemyData : ScriptableObject
 {
     [field: SerializeField] public Enemies EnemiesPrefab { get; private set; }
     [field: SerializeField] public string ID { get; private set; }
-
     [field: SerializeField] public float life { get; private set; }
+    [field: SerializeField] public float normalSpeed { get; private set; }
+    [field: SerializeField] public float attackSpeed { get; private set; }
 }

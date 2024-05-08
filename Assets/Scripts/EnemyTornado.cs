@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyTornado : Enemies
 {
     [SerializeField] private GameObject tornado;
+    [SerializeField] protected EnemyData enemyData;
     void Start()
     {
 
@@ -13,7 +14,7 @@ public class EnemyTornado : Enemies
     void Update()
     {
         MovementEnemies();
-        if (agent.speed == attackSpeed)
+        if (agent.speed == enemyData.attackSpeed)
         {
             tornado.SetActive(true);
         }

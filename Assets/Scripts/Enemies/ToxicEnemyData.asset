@@ -15,4 +15,6 @@ MonoBehaviour:
   <EnemiesPrefab>k__BackingField: {fileID: 368078275, guid: 666bc45c87aaec246b3b8d2a954f5c08,
     type: 3}
   <ID>k__BackingField: Toxic
-  <life>k__BackingField: 0
+  <life>k__BackingField: 100
+  <normalSpeed>k__BackingField: 1
+  <attackSpeed>k__BackingField: 2.5

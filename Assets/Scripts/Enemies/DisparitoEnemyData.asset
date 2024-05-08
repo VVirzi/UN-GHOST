@@ -15,4 +15,6 @@ MonoBehaviour:
   <EnemiesPrefab>k__BackingField: {fileID: 859085238, guid: 7612b2d56d8d7504ba16db3ec84f3054,
     type: 3}
   <ID>k__BackingField: Disparito
-  <life>k__BackingField: 0
+  <life>k__BackingField: 50
+  <normalSpeed>k__BackingField: 1
+  <attackSpeed>k__BackingField: 2

@@ -15,4 +15,6 @@ MonoBehaviour:
   <EnemiesPrefab>k__BackingField: {fileID: 1097867703, guid: d51f9895740838942813eb8a03859043,
     type: 3}
   <ID>k__BackingField: Tornado
-  <life>k__BackingField: 0
+  <life>k__BackingField: 70
+  <normalSpeed>k__BackingField: 1.5
+  <attackSpeed>k__BackingField: 3
