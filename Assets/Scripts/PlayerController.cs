@@ -6,16 +6,12 @@ using UnityEngine.UI;
 using UnityEngine.Networking.Types;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour, IDamagable
+public class PlayerController : MonoBehaviour
 {
     private CharacterController _player;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSensibility;
     [SerializeField] private Camera playerCamera;
-    private float life = 100;
-    private float maxLife = 100;
-    [SerializeField] private Canvas barraDeVidaUI;
-    [SerializeField] private Image barraDeVida;
     private float cameraVerticalAngle;
     
     void Start()
@@ -32,7 +28,6 @@ public class PlayerController : MonoBehaviour, IDamagable
         Rotationlook();
         MoveCharacter();
         ApplyGravityWhenNeeded();
-        Lifebaractualization();
     }
 
     private void MoveCharacter()
@@ -66,19 +61,5 @@ public class PlayerController : MonoBehaviour, IDamagable
             Vector3 moventY = new Vector3 (0, -5.5f, 0);
             _player.Move(moventY*Time.deltaTime);
         }
-    }
-
-    public void GetDamage(float damage)
-    {
-        life-= damage;
-        if(life < 0)
-        {
-            SceneManager.LoadScene("DefeatMenu");
-        }
-    }
-
-    public void Lifebaractualization()
-    {
-        barraDeVida.fillAmount = life/maxLife;
     }
 }

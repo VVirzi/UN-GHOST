@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         timeAcumulation += Time.deltaTime;
-        if (timeAcumulation > 15f)
+        if (timeAcumulation > 10f)
         {
             enemyType = GetRandonEnemyID();
             GenerateEnemy(enemyType);

@@ -1,25 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public static string lastEnemyKilled;
-    [SerializeField] private Recipiente[] recipientesInGame;
     public Action RecipientesEvent;
     private int recipientesConEnemigos = 0;
-    [SerializeField] private RayTorreta torreta;
-
+    private int recipientsNeeded = 25;
+    [SerializeField] private TextMeshProUGUI textCanvas;
     private void Start()
     {
         SubscribeEvents();
     }
     private void Update()
     {
-        if(recipientesConEnemigos == recipientesInGame.Length)
+        RecipientUI();
+        if (recipientesConEnemigos == recipientsNeeded)
         {
-            torreta.StartRayEvent?.Invoke();
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("VictoryMenu");
         }
     }
 
@@ -39,5 +42,10 @@ public class LevelManager : MonoBehaviour
     private void SumarRecipientesConEnemigos()
     {
         recipientesConEnemigos++;
+    }
+
+    private void RecipientUI()
+    {
+        textCanvas.text = recipientesConEnemigos.ToString() + " / " + recipientsNeeded.ToString();
     }
 }

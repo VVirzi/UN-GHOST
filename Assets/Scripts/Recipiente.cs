@@ -8,6 +8,7 @@ public class Recipiente : MonoBehaviour, IInteractable
     [SerializeField] private MeshRenderer centerMaterial;
     [SerializeField] private RecipientsData recipientsData;
     [SerializeField] private LevelManager levelManager;
+    private bool canInteract = true;
     void Start()
     {
         
@@ -21,14 +22,18 @@ public class Recipiente : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if(centerMaterial.material != null)
+        if (canInteract)
         {
-            enemyID = LevelManager.lastEnemyKilled;
-            if (enemyID != null)
+            if (centerMaterial.material != null)
             {
-                ChangeMaterial(enemyID);
-                LevelManager.lastEnemyKilled = null;
-                levelManager.RecipientesEvent?.Invoke();
+                enemyID = LevelManager.lastEnemyKilled;
+                if (enemyID != null)
+                {
+                    ChangeMaterial(enemyID);
+                    LevelManager.lastEnemyKilled = null;
+                    levelManager.RecipientesEvent?.Invoke();
+                    canInteract = false;
+                }
             }
         }
     }
