@@ -10,8 +10,9 @@ public class SuctionMachine : Weapons
     {
         if (Input.GetButton("Fire1"))
         {
-            if (WeaponRayCast())
+            if (WeaponRayCast()!=null)
             {
+                endPoint = hit.point;
                 directionForce = DirectionCalculate(weaponPoint.transform.position, endPoint);
                 directionForce = directionForce * fuerzaDeAbsorcion * Time.deltaTime;
                 hit.transform.position += directionForce;
@@ -39,13 +40,14 @@ public class SuctionMachine : Weapons
 
     private void ChangeEnemyScale(RaycastHit hit)
     {
-        if (hit.transform.localScale.x < 0.5 || hit.transform.localScale.y < 0.5 || hit.transform.localScale.z < 0.5)
+        if (hit.transform.localScale.x < 1 || hit.transform.localScale.y < 1 || hit.transform.localScale.z < 1)
         {
-            Destroy(hit.transform.gameObject);
+            return;
         }
         else
         {
             hit.transform.localScale -= Vector3.one * 2f*Time.deltaTime;
         }
     }
+
 }

@@ -2,39 +2,52 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RayTorreta : MonoBehaviour
 {
     [SerializeField] private Transform initialPoint;
     [SerializeField] private Transform finalPoint;
-    private Action Torreta;
-    private int recipientesConEnemigos = 0;
+    public Action StartRayEvent;
+    private LineRenderer rayoLaser;
+    private bool startRayLaser = false;
+    private float acumulador=0;
+
     void Start()
     {
-        SubscribeEvents();
+        rayoLaser = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(startRayLaser)
+        {
+            acumulador += Time.deltaTime;
+            rayoLaser.SetPosition(0, initialPoint.position);
+            rayoLaser.SetPosition(1, finalPoint.position);
+            if (acumulador > 10f)
+            {
+                SceneManager.LoadScene("VictoryMenu");
+            }
+        }
     }
 
     private void SubscribeEvents()
     {
-        Torreta += SumarRecipientesConEnemigos;
+        StartRayEvent += SetRayLaser;
     }
     private void UnsubscribeEvents()
     {
-        Torreta -= SumarRecipientesConEnemigos;
+        StartRayEvent -= SetRayLaser;
     }
     private void OnDisable()
     {
         UnsubscribeEvents();
     }
 
-    private void SumarRecipientesConEnemigos()
+    private void SetRayLaser()
     {
-        recipientesConEnemigos++;
+        startRayLaser = true;
     }
 }

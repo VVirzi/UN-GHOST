@@ -8,31 +8,19 @@ public class Enemies : MonoBehaviour, IEnemy
 {
     protected float life;
     [SerializeField] protected PlayerController player;
-    [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Transform[] interestPoints;
 
     protected Vector3 moveToThis;
     void Start()
     {
-        moveToThis = GetRandomVectorFromList();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        RotateTowardPlayer();
-        if (ApplyGravityWhenNeeded())
-        {
-            transform.position -= new Vector3(0, 5.5f, 0) * Time.deltaTime;
-        }
+
     }
 
-    protected void RotateTowardPlayer()
-    {
-        Vector3 playerPosition = player.gameObject.transform.position;
-        Quaternion lookAt = Quaternion.LookRotation(playerPosition - transform.position);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAt, 1.5f);
-    }
     protected bool ApplyGravityWhenNeeded()
     {
         if (transform.position.y > 0f)

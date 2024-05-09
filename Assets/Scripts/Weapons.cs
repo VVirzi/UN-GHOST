@@ -15,16 +15,16 @@ public class Weapons : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    protected bool WeaponRayCast()
+    protected Collider WeaponRayCast()
     {
         if(Physics.Raycast(weaponSight.transform.position, weaponSight.transform.forward, out hit, 7f))
         {
-            if(hit.transform.tag == "Enemigo")
+            if (hit.transform.tag == "Enemigo")
             {
-                return true;
+                return hit.collider;
             }
         }
-        return false;
+        return null;
     }
 
     protected void SetLineRenderer()

@@ -65,6 +65,8 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 859085237}
   interestPoints: []
+  enemyData: {fileID: 11400000, guid: 5defbf43f17615d47b2cd78e087930de, type: 2}
+  agent: {fileID: 859085237}
 --- !u!195 &859085237
 NavMeshAgent:
   m_ObjectHideFlags: 0

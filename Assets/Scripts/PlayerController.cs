@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking.Types;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,9 @@ public class PlayerController : MonoBehaviour, IDamagable
     [SerializeField] private float rotationSensibility;
     [SerializeField] private Camera playerCamera;
     private float life = 100;
+    private float maxLife = 100;
+    [SerializeField] private Canvas barraDeVidaUI;
+    [SerializeField] private Image barraDeVida;
     private float cameraVerticalAngle;
     
     void Start()
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour, IDamagable
         Rotationlook();
         MoveCharacter();
         ApplyGravityWhenNeeded();
+        Lifebaractualization();
     }
 
     private void MoveCharacter()
@@ -72,4 +77,8 @@ public class PlayerController : MonoBehaviour, IDamagable
         }
     }
 
+    public void Lifebaractualization()
+    {
+        barraDeVida.fillAmount = life/maxLife;
+    }
 }

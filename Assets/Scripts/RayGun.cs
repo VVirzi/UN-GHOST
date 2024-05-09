@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,15 @@ using UnityEngine;
 public class RayGun : Weapons
 {
     [SerializeField] private ParticleSystem shootParticles;
+    
     void Update()
     {
         if (Input.GetButton("Fire2"))
         {
-            if (WeaponRayCast())
+            if (WeaponRayCast()!=null)
             {
-                endPoint = hit.point;
+                WeaponRayCast().gameObject.TryGetComponent(out IDamagable enemy);
+                enemy.GetDamage(40*Time.deltaTime);
             }
             else
             {

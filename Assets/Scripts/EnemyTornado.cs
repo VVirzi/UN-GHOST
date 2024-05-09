@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyTornado : Enemies, IDamagable
 {
     [SerializeField] private GameObject tornado;
     [SerializeField] protected EnemyData enemyData;
+    [SerializeField] protected NavMeshAgent agent;
     void Start()
     {
         life = enemyData.life;
@@ -15,7 +17,6 @@ public class EnemyTornado : Enemies, IDamagable
 
     void Update()
     {
-        RotateTowardPlayer();
         if (ApplyGravityWhenNeeded())
         {
             transform.position -= new Vector3(0, 5.5f, 0) * Time.deltaTime;
@@ -23,6 +24,7 @@ public class EnemyTornado : Enemies, IDamagable
         MovementEnemies();
         if (agent.speed == enemyData.attackSpeed)
         {
+            RotateTowardPlayer();
             tornado.SetActive(true);
         }
         else
@@ -57,4 +59,11 @@ public class EnemyTornado : Enemies, IDamagable
             Destroy(this.gameObject);
         }
     }
+    protected void RotateTowardPlayer()
+    {
+        Vector3 playerPosition = player.gameObject.transform.position;
+        Quaternion lookAt = Quaternion.LookRotation(playerPosition - transform.position);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAt, 1.5f);
+    }
+    
 }

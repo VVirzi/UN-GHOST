@@ -148,6 +148,8 @@ MonoBehaviour:
   agent: {fileID: 1097867702}
   interestPoints: []
   tornado: {fileID: 3566363853667943461}
+  enemyData: {fileID: 11400000, guid: 60327937c344bab42b2ffc3490017d9c, type: 2}
+  agent: {fileID: 1097867702}
 --- !u!1001 &4449324255329598890
 PrefabInstance:
   m_ObjectHideFlags: 0
